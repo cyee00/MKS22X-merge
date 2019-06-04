@@ -1,10 +1,10 @@
 public class Merge{
   public static void mergesort(int[]data){
-    return sort(data);
+    sort(data);
   }
 
-  private static int[] sort(int[]data){
-  if (a.length==1&&b.length==0){
+  private static void sort(int[]data){
+  /*if (a.length==1&&b.length==0){
     return a;
   }
   if (b.length==1&&a.length==0){
@@ -20,7 +20,11 @@ public class Merge{
       ans[1]=a[0];
       return ans;
     }
-  }
+  }*/
+    if (data.length<=1){
+      data=data;
+      return;
+    } else{
     int half;
     if (data.length%2==0){
       half=data.length/2;
@@ -35,25 +39,27 @@ public class Merge{
     for (int i=half;i<data.length;i++){
       b[i-half]=data[i];
     }
-    return merge(sort(a),sort(b));
+    merge(a,b);
+    }
   }
 
-  private static int[] merge(int[]a,int[]b){
+
+  private static void merge(int[]a,int[]b){
     int[] ans = new int[a.length+b.length];
     int counterA = 0;
     int counterB = 0;
-    int index = 0;
+    int counterAns = 0;
     while (counterA<a.length&&counterB<b.length){
       if (b[counterB]<a[counterA]){
-        ans[index]=b[counterB];
+        ans[counterAns]=b[counterB];
         counterB++;
       } else {
-        ans[index]=a[counterA];
+        ans[counterAns]=a[counterA];
         counterA++;
       }
-      index++;
+      counterAns++;
     }
-    return ans;
+    return;
   }
 
 }
