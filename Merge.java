@@ -4,16 +4,18 @@ public class Merge{
   }
   private static int[] sort(int[]data){
     int half;
-    int[] a,b;
     if (data.length%2==0){
       half=data.length/2;
     } else {
       half = data.length/2+1;
     }
     int[] a = new int[half];
-    int[] b = new int[data.length-half]
-    for (int i=0;i<half,i++){
-
+    int[] b = new int[data.length-half];
+    for (int i=0;i<half;i++){
+      a[i]=data[i];
+    }
+    for (int i=half;i<data.length;i++){
+      b[i-half]=data[i];
     }
     return merge(a,b);
   }
