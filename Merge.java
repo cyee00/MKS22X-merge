@@ -1,6 +1,6 @@
 public class Merge{
   public static void mergesort(int[]data){
-
+    return sort(data);
   }
   private static int[] sort(int[]data){
     int half;
@@ -20,6 +20,17 @@ public class Merge{
     return merge(a,b);
   }
   private static int[] merge(int[]a,int[]b){
-    return a;
+    if (a.length==1&&b.length==1){
+      int[] ans = new int[2];
+      if (a[0]<b[0]){
+        ans[0]=a[0];
+        ans[1]=b[0];
+        return ans;
+      } else {
+        ans[0]=b[0];
+        ans[1]=a[0];
+        return ans;
+      }
+    }
   }
 }
