@@ -4,26 +4,16 @@ public class Merge{
   }
 
   private static void sort(int[]data){
-  /*if (a.length==1&&b.length==0){
-    return a;
-  }
-  if (b.length==1&&a.length==0){
-    return b;
-  }
-  if (a.length==1&&b.length==1){
-    if (a[0]<b[0]){
-      ans[0]=a[0];
-      ans[1]=b[0];
-      return ans;
-    } else {
-      ans[0]=b[0];
-      ans[1]=a[0];
-      return ans;
-    }
-  }*/
     if (data.length<=1){
       data=data;
       return;
+    } else if (data.length==2){
+      if (data[1]<data[0]){
+        int temp = data[0];
+        data[0]=data[1];
+        data[1]=temp;
+        return;
+      }
     } else{
     int half;
     if (data.length%2==0){
@@ -39,12 +29,12 @@ public class Merge{
     for (int i=half;i<data.length;i++){
       b[i-half]=data[i];
     }
-    merge(a,b);
+    data = merge(a,b);
     }
   }
 
 
-  private static void merge(int[]a,int[]b){
+  private static int[] merge(int[]a,int[]b){
     int[] ans = new int[a.length+b.length];
     int counterA = 0;
     int counterB = 0;
@@ -59,7 +49,20 @@ public class Merge{
       }
       counterAns++;
     }
-    return;
+    return ans;
   }
 
+  public static String toString(int[]data){
+    String ans="";
+    for (int i=0;i<data.length;i++){
+      ans+=data[i];
+    }
+    return ans;
+  }
+
+  public static void main(String[]args){
+    int[] test = {1,3,2,3,5};
+    mergesort(test);
+    System.out.println("Test: " + toString(test));
+  }
 }
