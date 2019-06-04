@@ -29,13 +29,13 @@ public class Merge{
       for (int i=half;i<data.length;i++){
         b[i-half]=data[i];
       }
-      if (a.length<=1&&b.length<=1){
-        data = merge(a,b);
-        return;
+      /*if (!(a.length<=1&&b.length<=1)){
+        mergesort(a);
+        mergesort(b);
       } else {
-        sort(a);
-        sort(b);
-      }
+        data = merge(a,b);
+      }*/
+      data = merge(a,b);
     }
   }
 
@@ -47,13 +47,17 @@ public class Merge{
     int counterA = 0;
     int counterB = 0;
     int counterAns = 0;
-    while (counterA<a.length&&counterB<b.length){
+    for (int i=0;i<ans.length;i++){
       if (b[counterB]<a[counterA]){
         ans[counterAns]=b[counterB];
-        counterB++;
+        if (counterB<b.length-1){
+          counterB++;
+        }
       } else {
         ans[counterAns]=a[counterA];
-        counterA++;
+        if (counterA<a.length-1){
+          counterA++;
+        }
       }
       System.out.println("After "+counterAns+"passes: ans: "+toString(ans)+"a: "+toString(a)+"b: "+toString(b));
       counterAns++;
@@ -70,7 +74,7 @@ public class Merge{
   }
 
   public static void main(String[]args){
-    int[] test = {1,0,2,3,5};
+    int[] test = {1,1,2,1,5};
     mergesort(test);
     System.out.println("Test: " + toString(test));
   }
