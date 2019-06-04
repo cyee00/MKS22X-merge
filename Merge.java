@@ -2,6 +2,7 @@ public class Merge{
   public static void mergesort(int[]data){
     return sort(data);
   }
+
   private static int[] sort(int[]data){
     int half;
     if (data.length%2==0){
@@ -19,9 +20,16 @@ public class Merge{
     }
     return merge(a,b);
   }
+
   private static int[] merge(int[]a,int[]b){
+    int[] ans = new int[a.length+b.length];
+    if (a.length==1&&b.length==0){
+      return a;
+    }
+    if (b.length==1&&a.length==0){
+      return b;
+    }
     if (a.length==1&&b.length==1){
-      int[] ans = new int[2];
       if (a[0]<b[0]){
         ans[0]=a[0];
         ans[1]=b[0];
@@ -32,5 +40,11 @@ public class Merge{
         return ans;
       }
     }
+    int counterA = 0;
+    int counterB = 0;
+    while (counterA<a.length&&counterB<b.length){
+      if (a[counterA]<b[counterB])
+    }
   }
+
 }
