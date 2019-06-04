@@ -14,28 +14,30 @@ public class Merge{
         data[1]=temp;
         return;
       }
-    } else{
-    int half;
-    if (data.length%2==0){
-      half=data.length/2;
     } else {
-      half = data.length/2+1;
-    }
-    int[] a = new int[half];
-    int[] b = new int[data.length-half];
-    for (int i=0;i<half;i++){
-      a[i]=data[i];
-    }
-    for (int i=half;i<data.length;i++){
-      b[i-half]=data[i];
-    }
-    data = merge(a,b);
+      int half;
+      if (data.length%2==0){
+        half=data.length/2;
+      } else {
+        half = data.length/2+1;
+      }
+      int[] a = new int[half];
+      int[] b = new int[data.length-half];
+      for (int i=0;i<half;i++){
+        a[i]=data[i];
+      }
+      for (int i=half;i<data.length;i++){
+        b[i-half]=data[i];
+      }
+      data = merge(a,b);
     }
   }
 
 
   private static int[] merge(int[]a,int[]b){
     int[] ans = new int[a.length+b.length];
+    //System.out.println(toString(a));
+    //System.out.println(toString(b));
     int counterA = 0;
     int counterB = 0;
     int counterAns = 0;
@@ -61,7 +63,7 @@ public class Merge{
   }
 
   public static void main(String[]args){
-    int[] test = {1,3,2,3,5};
+    int[] test = {1,0,2,3,5};
     mergesort(test);
     System.out.println("Test: " + toString(test));
   }
