@@ -29,15 +29,21 @@ public class Merge{
       for (int i=half;i<data.length;i++){
         b[i-half]=data[i];
       }
-      data = merge(a,b);
+      if (a.length<=1&&b.length<=1){
+        data = merge(a,b);
+        return;
+      } else {
+        sort(a);
+        sort(b);
+      }
     }
   }
 
 
   private static int[] merge(int[]a,int[]b){
     int[] ans = new int[a.length+b.length];
-    //System.out.println(toString(a));
-    //System.out.println(toString(b));
+    System.out.println(toString(a));
+    System.out.println(toString(b));
     int counterA = 0;
     int counterB = 0;
     int counterAns = 0;
@@ -49,6 +55,7 @@ public class Merge{
         ans[counterAns]=a[counterA];
         counterA++;
       }
+      System.out.println("After "+counterAns+"passes: ans: "+toString(ans)+"a: "+toString(a)+"b: "+toString(b));
       counterAns++;
     }
     return ans;
